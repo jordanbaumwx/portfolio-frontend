@@ -1,6 +1,18 @@
 import Skills from './Skills';
+import { useQuery } from 'react-query';
+import { getBio } from '../../hooks/Bio';
 
-const Bio = () => {
+function Bio() {
+  const { isLoading, isError, data, error } = useQuery('bio', getBio);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <span>Error:</span>;
+  }
+  console.log(isLoading, isError, data, error);
   return (
     <section className="justify-center items-center place-content-center">
       <div className="flex flex-row min-w-screen justify-center items-center">
@@ -16,20 +28,16 @@ const Bio = () => {
             <div className="mr-auto place-self-center lg:col-span-7 ml-4 mt-2">
               <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
                 <span className="bg-clip-text text-transparent  text-white ">
-                  Jordan Baumgardner
+                  {data.name}
                 </span>
               </h1>
               <h4 className="max-w-2xl mb-4 text-xl font-extrabold tracking-tight leading-none md:text-3xl xl:text-3xl">
                 <span className="bg-clip-text text-transparent  text-white">
-                  Senior Software Engineer
+                  {data.tagline}
                 </span>
               </h4>
               <p className="max-w-2xl mb-6 font-medium text-white">
-                Senior software engineer with 6+ years of experience developing
-                various software systems and services for a diverse range of
-                clients including private entities, international weather
-                services, airport agencies, farmers, and other business users
-                through web-based applications.
+                {data.bio}
               </p>
               <Skills />
             </div>
@@ -38,6 +46,6 @@ const Bio = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Bio;
