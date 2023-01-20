@@ -1,4 +1,11 @@
-function Header(props: { className: string }) {
+function Header(props: {
+  className: string;
+  company: {
+    name: string;
+    title: string;
+    logo: string;
+  };
+}) {
   return (
     <div
       className={
@@ -16,10 +23,10 @@ function Header(props: { className: string }) {
         {/* Make a inline span */}
         <div className="inline-block align-text-top ">
           <h3 className="text-white text-4xl font-bold ml-2 inline-block mx-4">
-            Farmers Risk
+            {props.company.name}
           </h3>
           <h3 className="text-white text-2xl  font-medium ml-auto inline-block">
-            Senior Software Engineer
+            {props.company.title}
           </h3>
         </div>
 

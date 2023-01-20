@@ -1,4 +1,4 @@
-function Description(props: { className: string }) {
+function Description(props: { className: string; duties: string[] }) {
   return (
     <div
       className={
