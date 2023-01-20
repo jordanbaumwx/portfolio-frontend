@@ -18,6 +18,7 @@ function Header(props: {
         <img
           className="w-12 h-12 left-0 top-0 rounded-full"
           src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/yipswzs1rezhuwoth9tm"
+          alt="Jordan Baumgardner"
         />
 
         {/* Make a inline span */}
